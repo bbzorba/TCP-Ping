@@ -9,8 +9,7 @@ import matplotlib.animation as animation
 warnings.filterwarnings("ignore")
 
 ############################CREATING EXCEL FILES#################################
-#Do not forget to write your PC's username on the path below
-PingBook = xlsxwriter.Workbook('C:/Users/WRITEYOURPCSUSERNAMEHERE/.spyder-py3/PingData.xlsx')
+PingBook = xlsxwriter.Workbook('C:/Users/BarisZorba/.spyder-py3/PingData.xlsx')
 
 sheet = PingBook.add_worksheet()
 
@@ -38,18 +37,19 @@ while(True):
         
         i = 10
 
-        #give your IP address and port number to measure the ping
-        ping = measure_latency(host='192.168.188.29', port=8086, timeout=2.5)
+        #measure the ping
+        #ping = measure_latency(host='81.95.107.155', port=50061, timeout=2.5)
+        ping = measure_latency(host='8.8.8.8', timeout=2.5)
         print(ping, "ms")
         
-        #writing into an excel book
+        #write into excel
         sheet.write(row, column, dt.datetime.now().strftime('%H:%M:%S'))
         column += 1
         sheet.write(row, column, ping[0])
         column -= 1
         row += 1
         
-        #drawing the graph
+        #draw graph
         xs.append(dt.datetime.now().strftime('%H:%M:%S'))
         ys.append(ping[0])
         ax.clear()
