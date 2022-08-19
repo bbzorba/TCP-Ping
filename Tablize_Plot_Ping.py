@@ -38,19 +38,18 @@ while(True):
         
         i = 10
 
-        #measure the ping
-        #ping = measure_latency(host='81.95.107.155', port=50061, timeout=2.5)
+        #give your IP address and port number to measure the ping
         ping = measure_latency(host='192.168.188.29', port=8086, timeout=2.5)
         print(ping, "ms")
         
-        #write into excel
+        #writing into an excel book
         sheet.write(row, column, dt.datetime.now().strftime('%H:%M:%S'))
         column += 1
         sheet.write(row, column, ping[0])
         column -= 1
         row += 1
         
-        #draw graph
+        #drawing the graph
         xs.append(dt.datetime.now().strftime('%H:%M:%S'))
         ys.append(ping[0])
         ax.clear()
